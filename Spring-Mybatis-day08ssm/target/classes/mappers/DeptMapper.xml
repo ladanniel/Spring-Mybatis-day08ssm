@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+	<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- namespace:表示命名空间，值是唯一的 -->
+<!-- 1/没有实现类，mybatis会生成接口的实现类 2/例如IUSerDao 现在写成UserDao 把I去掉 3/namespace：表示命名空间，值必须为接口的名称（包括包名） -->
+<mapper namespace="cn.tedu.ssm.dao.DeptDao"><!-- 定义接口名，接口调用实现类的方法（向上造型）（规范写法） -->
+	<!-- public void insertDept(Dept dept); -->
+	<insert id="insertDept" parameterType="cn.tedu.ssm.bean.Dept">
+		insert into dept(dept_name,dept_loc) values(#{deptName},#{deptLoc})
+	</insert>
+	<select id="selectAll" resultType="cn.tedu.ssm.bean.Dept">
+	select id,dept_name deptName,dept_loc deptLoc from dept
+	</select>
+	<delete id="deleteById" parameterType="cn.tedu.ssm.bean.Dept">
+	 delete from dept where id=#{id}
+	</delete>
+	<update id="updateDept" parameterType="cn.tedu.ssm.bean.Dept">
+	 update dept set dept_name=#{deptName},dept_loc=#{deptLoc} where id=#{id} 
+	</update>
+</mapper>
